@@ -12,23 +12,27 @@ type Node struct {
 }
 
 func Init() *Tries {
-	result := &Tries{root: &Node{}}
-	return result
+	return &Tries{root: &Node{}}
 }
 
+// insert 往Tries中插入数据
 func (t *Tries) insert(w string) {
 	wordsCount := len(w)
 	currentNode := t.root
 	for i := 0; i < wordsCount; i++ {
+		// 获取每个字符当前的索引
 		currentIndex := w[i] - 'a'
+		// 如果不存在该字符索引 则新增Node
 		if currentNode.children[currentIndex] == nil {
 			currentNode.children[currentIndex] = &Node{}
 		}
+		// 继续
 		currentNode = currentNode.children[currentIndex]
 	}
 	currentNode.isEnd = true
 }
 
+// search 搜索
 func (t *Tries) search(w string) bool {
 	wordsCount := len(w)
 	currentNode := t.root

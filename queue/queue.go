@@ -7,10 +7,12 @@ type Queue struct {
 	slice []int
 }
 
+// Enqueue 入队列
 func (q *Queue) Enqueue(value int) {
 	q.slice = append(q.slice, value)
 }
 
+// Dequeue 出队列
 func (q *Queue) Dequeue() int {
 	out := q.slice[0]
 	q.slice = q.slice[1:]

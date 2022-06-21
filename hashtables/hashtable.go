@@ -4,29 +4,29 @@ import "fmt"
 
 const ArraySize = 7
 
-// hashtable (array + linkedList)
+// HashTable (array + linkedList)
 type HashTable struct {
 	array [ArraySize]*bucket
 }
 
-// 桶
+// bucket 桶
 type bucket struct {
 	head *bucketNode
 }
 
-// 桶node
+// bucketNode 桶node
 type bucketNode struct {
 	key  string
 	next *bucketNode
 }
 
-// Insert
+// Insert 插入
 func (t *HashTable) Insert(key string) {
 	h := hash(key)
 	t.array[h].insert(key)
 }
 
-// Search
+// Search 搜索
 func (t *HashTable) Search(key string) bool {
 	// 根据hash算法得到key所在的index
 	h := hash(key)
@@ -34,13 +34,13 @@ func (t *HashTable) Search(key string) bool {
 	return t.array[h].search(key)
 }
 
-// Delete
+// Delete 删除
 func (t *HashTable) Delete(key string) {
 	h := hash(key)
 	t.array[h].delete(key)
 }
 
-// hash
+// hash 算法
 func hash(key string) int {
 	sum := 0
 	for _, v := range key {
@@ -95,7 +95,7 @@ func (b *bucket) delete(key string) {
 	b.head.next = b.head.next.next
 }
 
-// 初始化,给hashtable array 给个空桶
+// Init 初始化,给hashtable array 给个空桶
 func Init() *HashTable {
 	result := &HashTable{}
 	for i := range result.array {

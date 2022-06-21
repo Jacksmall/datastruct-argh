@@ -21,7 +21,7 @@ type node struct {
 	next *node
 }
 
-// FI 前置入队列 lpush node
+// prepend FI 前置入队列 lpush node
 func (l *linkedList) prepend(node ...*node) {
 	for _, m := range node {
 		second := l.head
@@ -48,7 +48,7 @@ func (l linkedList) search(value int) bool {
 	return false
 }
 
-// 打印队列
+// PrintMyList 打印队列
 func (l linkedList) PrintMyList() {
 	toPrint := l.head
 	for l.length > 0 {
@@ -59,7 +59,7 @@ func (l linkedList) PrintMyList() {
 	fmt.Printf("\n")
 }
 
-// 出队列 lpop
+// delete 出队列 lpop
 func (l *linkedList) delete(value int) {
 	if l.length == 0 {
 		return
@@ -80,7 +80,7 @@ func (l *linkedList) delete(value int) {
 	l.length--
 }
 
-// 队列长度 时间复杂度 O(1)
+// Len 队列长度 时间复杂度 O(1)
 func (l *linkedList) Len() int { return l.length }
 
 func main() {

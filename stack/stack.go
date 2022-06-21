@@ -7,12 +7,12 @@ type Stack struct {
 	slice []int
 }
 
-// push
+// Push 入栈
 func (s *Stack) Push(value int) {
 	s.slice = append(s.slice, value)
 }
 
-// pop
+// Pop 出栈
 func (s *Stack) Pop() int {
 	var toPop int
 	l := len(s.slice) - 1
@@ -30,6 +30,7 @@ func main() {
 		s.Push(v)
 	}
 	fmt.Println(s)
-	s.Pop()
+	ps := s.Pop()
 	fmt.Println(s)
+	fmt.Printf("pop %d from stack\n", ps)
 }

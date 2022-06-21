@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// MaxHeap
+// MaxHeap 最大堆
 type MaxHeap struct {
 	array []int
 }
