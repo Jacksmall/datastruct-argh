@@ -1,3 +1,6 @@
+/*
+ * 责任链代码示例，适用场景:下单操作
+ */
 package main
 
 import (
@@ -57,7 +60,8 @@ func runFuncName() string {
 }
 
 func main() {
-
+	// NullHandler 结构体 有tasks slice 用来接收责任链中多个handler 处理者
+	// 多个handler都是struct 都实现了 Handler 接口中的方法 所以可以作为Handler 被tasks接收
 	nullHandler := &NullHandler{}
 	nullHandler.Tasks = []Handler{
 		&CurrencyGBTHandler{},
@@ -69,6 +73,7 @@ func main() {
 	c := &Context{}
 
 	for _, h := range nullHandler.Tasks {
+		// 执行每个task 的 Do() 方法
 		if err := h.Do(c); err != nil {
 			fmt.Println("Error: " + err.Error())
 			return
