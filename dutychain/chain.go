@@ -59,6 +59,16 @@ func runFuncName() string {
 	return f.Name()
 }
 
+/*
+ * go run .
+ * 输出:
+ * main.(*CurrencyGBTHandler).Do 积分处理...
+ * main.(*CurrencyCNYHandler).Do 现金处理...
+ * main.(*GoodsHandler).Do 商品处理...
+ * main.(*ChannelHandler).Do 渠道处理...
+ * Success
+ */
+
 func main() {
 	// NullHandler 结构体 有tasks slice 用来接收责任链中多个handler 处理者
 	// 多个handler都是struct 都实现了 Handler 接口中的方法 所以可以作为Handler 被tasks接收
